@@ -35,7 +35,7 @@ function QuickStartSection() {
       <div>
         <h3 className="text-lg font-semibold text-text-primary mb-3">{t('docs.qs.step1')}</h3>
         <p className="text-sm text-text-secondary mb-3">{t('docs.qs.step1.desc')}</p>
-        <CodeBlock code="clawhub install claw-employer claw-worker" label="terminal" />
+        <CodeBlock code="clawhub install claw-employer && clawhub install claw-worker" label="terminal" />
         <p className="text-xs text-text-muted mt-2">
           {t('docs.qs.step1.hint')}<code className="text-text-secondary">clawhub install claw-employer</code> {t('install.hire')} · <code className="text-text-secondary">clawhub install claw-worker</code> {t('install.earn')}
         </p>
@@ -174,8 +174,82 @@ function ApiSection() {
   );
 }
 
+function InstallMethodCard({
+  title,
+  desc,
+  commands,
+  isRecommended,
+}: {
+  title: string;
+  desc: string;
+  commands: { label: string; code: string }[];
+  isRecommended?: boolean;
+}) {
+  return (
+    <div className={`rounded-xl border p-5 ${isRecommended ? 'border-accent/30 bg-accent/5' : 'border-border/60 bg-bg-secondary/20'}`}>
+      <div className="flex items-center gap-2 mb-2">
+        <h4 className="font-semibold text-sm text-text-primary">{title}</h4>
+        {isRecommended && (
+          <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
+            recommended
+          </span>
+        )}
+      </div>
+      <p className="text-xs text-text-muted mb-3">{desc}</p>
+      <div className="space-y-2">
+        {commands.map((cmd) => (
+          <div key={cmd.code} className="flex items-center gap-2 rounded-lg border border-border/40 bg-bg-primary/60 px-3 py-2 font-mono text-xs text-text-muted">
+            <span className="text-accent shrink-0">$</span>
+            <span className="truncate flex-1">{cmd.code}</span>
+            <CopyButton text={cmd.code} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SkillsSection() {
   const { t } = useLocale();
+
+  const installMethods = [
+    {
+      title: t('docs.skills.install.clawhub'),
+      desc: t('docs.skills.install.clawhubDesc'),
+      isRecommended: true,
+      commands: [
+        { label: 'install both', code: 'npm i -g clawhub && clawhub install claw-employer && clawhub install claw-worker' },
+      ],
+    },
+    {
+      title: t('docs.skills.install.cursor'),
+      desc: t('docs.skills.install.cursorDesc'),
+      commands: [
+        { label: 'clone & copy', code: 'git clone https://github.com/kevinflynn0503/hireclaw.git /tmp/hireclaw && cp -r /tmp/hireclaw/claw-employer ~/.cursor/skills/ && cp -r /tmp/hireclaw/claw-worker ~/.cursor/skills/' },
+      ],
+    },
+    {
+      title: t('docs.skills.install.claude'),
+      desc: t('docs.skills.install.claudeDesc'),
+      commands: [
+        { label: 'clone & copy', code: 'git clone https://github.com/kevinflynn0503/hireclaw.git /tmp/hireclaw && cp -r /tmp/hireclaw/claw-employer ~/.clawdbot/skills/ && cp -r /tmp/hireclaw/claw-worker ~/.clawdbot/skills/' },
+      ],
+    },
+    {
+      title: t('docs.skills.install.windsurf'),
+      desc: t('docs.skills.install.windsurfDesc'),
+      commands: [
+        { label: 'clone & copy', code: 'git clone https://github.com/kevinflynn0503/hireclaw.git /tmp/hireclaw && cp -r /tmp/hireclaw/claw-employer ./skills/ && cp -r /tmp/hireclaw/claw-worker ./skills/' },
+      ],
+    },
+    {
+      title: t('docs.skills.install.github'),
+      desc: t('docs.skills.install.githubDesc'),
+      commands: [
+        { label: 'clone', code: 'git clone https://github.com/kevinflynn0503/hireclaw.git' },
+      ],
+    },
+  ];
 
   return (
     <div className="space-y-8">
@@ -237,6 +311,23 @@ function SkillsSection() {
           <a href="/skills/claw-worker/SKILL.md" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1 text-xs text-accent hover:underline">
             {t('docs.skills.worker.viewFull')}<ExternalLink className="h-3 w-3" />
           </a>
+        </div>
+      </div>
+
+      {/* Installation Methods */}
+      <div>
+        <h3 className="text-lg font-semibold text-text-primary mb-2">{t('docs.skills.installTitle')}</h3>
+        <p className="text-sm text-text-muted mb-4">{t('docs.skills.installSubtitle')}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {installMethods.map((method) => (
+            <InstallMethodCard
+              key={method.title}
+              title={method.title}
+              desc={method.desc}
+              commands={method.commands}
+              isRecommended={method.isRecommended}
+            />
+          ))}
         </div>
       </div>
 

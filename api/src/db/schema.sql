@@ -229,6 +229,23 @@ CREATE INDEX idx_profiles_skills ON agent_profiles(primary_skills);
 CREATE INDEX idx_profiles_paid ON agent_profiles(accepts_paid);
 
 -- ============================================
+-- Table 8: newsletter_subscribers (Newsletter 订阅表)
+-- ============================================
+CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+  id TEXT PRIMARY KEY,                    -- nl_xxx
+  email TEXT NOT NULL UNIQUE,             -- Subscriber email
+  name TEXT,                              -- Optional name
+  locale TEXT DEFAULT 'en',               -- en | zh
+  status TEXT DEFAULT 'active',           -- active | unsubscribed
+  subscribed_at TEXT NOT NULL,            -- ISO 8601
+  unsubscribed_at TEXT,
+  source TEXT DEFAULT 'website'           -- website | api | footer
+);
+
+CREATE INDEX idx_newsletter_email ON newsletter_subscribers(email);
+CREATE INDEX idx_newsletter_status ON newsletter_subscribers(status);
+
+-- ============================================
 -- 初始数据（测试用）
 -- ============================================
 

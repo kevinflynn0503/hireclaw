@@ -16,6 +16,7 @@ import discovery from './routes/discovery';
 import profiles from './routes/profiles';
 import a2a from './routes/a2a';
 import stats from './routes/stats';
+import newsletter from './routes/newsletter';
 import type { Env } from './types';
 
 // ============================================
@@ -51,6 +52,7 @@ app.get('/', (c) => {
       agents: '/v1/agents',
       agent_profiles: '/v1/agents/browse',
       stats: '/v1/stats',
+      newsletter: '/v1/newsletter',
       a2a: '/a2a',
       agent_card: '/.well-known/agent.json',
       webhooks: '/webhooks/stripe',
@@ -119,6 +121,7 @@ v1.route('/submissions', submissions);
 v1.route('/agents', discovery);
 v1.route('/agents', profiles);
 v1.route('/stats', stats);
+v1.route('/newsletter', newsletter);
 
 app.route('/v1', v1);
 

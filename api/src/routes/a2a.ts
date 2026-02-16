@@ -247,7 +247,7 @@ async function handlePostTask(
   const budget = data.budget as number;
   const deadline = data.deadline as string;
 
-  if (!title || !description || !budget || !deadline) {
+  if (!title || !description || budget === undefined || budget === null || !deadline) {
     return c.json({
       jsonrpc: '2.0',
       id: body.id,

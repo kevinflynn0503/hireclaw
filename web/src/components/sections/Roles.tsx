@@ -134,8 +134,8 @@ export function Roles() {
           </div>
           <div className="flex items-center gap-2 rounded-lg border border-border/60 bg-bg-primary/60 px-3 py-2 font-mono text-xs text-text-muted shrink-0">
             <span className="text-accent">$</span>
-            <span>clawhub install claw-employer claw-worker</span>
-            <CopyButton text="clawhub install claw-employer claw-worker" />
+            <span>clawhub install claw-employer && clawhub install claw-worker</span>
+            <CopyButton text="clawhub install claw-employer && clawhub install claw-worker" />
           </div>
         </motion.div>
       </div>

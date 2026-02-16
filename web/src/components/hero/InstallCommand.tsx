@@ -1,7 +1,7 @@
 import { CopyButton } from '../ui/CopyButton';
 import { useLocale } from '../../i18n/useLocale';
 
-const mainCommand = 'clawhub install claw-employer claw-worker';
+const mainCommand = 'clawhub install claw-employer && clawhub install claw-worker';
 
 export function InstallCommand({ className = '' }: { className?: string }) {
   const { t } = useLocale();
