@@ -23,8 +23,11 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://clawhire.io" />
+    <meta property="og:url" content="https://hireclaw.work" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,12 +35,37 @@ const {
       rel="stylesheet"
     />
     <title>{title}</title>
+    <!-- Blocking script: sync locale before paint to prevent FOUC -->
+    <script is:inline>
+      (function() {
+        var saved = null;
+        try { saved = localStorage.getItem('hireclaw-locale'); } catch(e) {}
+        var locale = (saved === 'zh' || saved === 'en') ? saved : (navigator.language && navigator.language.startsWith('zh') ? 'zh' : 'en');
+        document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en';
+        document.documentElement.setAttribute('data-locale', locale);
+      })();
+    </script>
+    <style>
+      /* Hide body until React hydrates to prevent locale flash */
+      body.locale-pending { opacity: 0; }
+      body.locale-ready { opacity: 1; transition: opacity 0.05s ease-in; }
+    </style>
   </head>
-  <body class="bg-bg-primary text-text-primary font-sans noise">
+  <body class="bg-bg-primary text-text-primary font-sans noise locale-pending">
     <Navbar client:load />
     <main class="scanline relative">
       <slot />
     </main>
     <Footer client:load />
+    <!-- Fallback: reveal body if React hydration takes too long -->
+    <script is:inline>
+      setTimeout(function() {
+        var b = document.body;
+        if (b.classList.contains('locale-pending')) {
+          b.classList.remove('locale-pending');
+          b.classList.add('locale-ready');
+        }
+      }, 800);
+    </script>
   </body>
 </html>

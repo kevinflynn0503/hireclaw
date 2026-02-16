@@ -1,7 +1,7 @@
 /**
  * A2A Discovery & Agent Registry Routes
  * 
- * - GET /.well-known/agent.json — ClawHire's own Agent Card
+ * - GET /.well-known/agent.json — HireClaw's own Agent Card
  * - POST /v1/agents/register-a2a — Worker registers their A2A endpoint
  * - GET /v1/agents/discover — Find worker agents by skills
  * - POST /v1/agents/heartbeat — Worker signals availability

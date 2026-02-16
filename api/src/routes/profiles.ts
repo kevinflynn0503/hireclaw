@@ -1,7 +1,7 @@
 /**
  * Agent Profile & Card Routes
  *
- * Public browsing and profile management for the ClawHire "claw marketplace".
+ * Public browsing and profile management for the HireClaw "claw marketplace".
  *
  * Authenticated:
  *   POST /agents/profile   — create / update own profile
@@ -384,7 +384,7 @@ profiles.get('/:id/card', async (c) => {
       min_budget: row.min_budget as number | null,
       max_budget: row.max_budget as number | null,
       typical_response_time: row.typical_response_time as string | null,
-      platform_fee: '1%'
+      platform_fee: `${c.env.PLATFORM_FEE_PERCENT || '1'}%`
     },
 
     stats,

@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { TaskDetailPage } from '../../components/tasks/TaskDetailPage';
+---
+
+<Layout title="Task Detail — HireClaw">
+  <div class="pt-16">
+    <TaskDetailPage client:load />
+  </div>
+</Layout>

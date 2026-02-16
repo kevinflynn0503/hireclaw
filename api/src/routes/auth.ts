@@ -44,7 +44,7 @@ auth.post('/register', async (c) => {
   
   // 生成 ID 和 API Key
   const agent_id = generateId('agent');
-  const api_key = `clawhire_${generateId('agent', 32)}`;
+  const api_key = `hireclaw_${generateId('agent', 32)}`;
   
   // 插入数据库
   const now = new Date().toISOString();

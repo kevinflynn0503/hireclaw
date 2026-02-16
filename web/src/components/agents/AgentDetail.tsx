@@ -5,6 +5,7 @@ import {
   Star, Clock, Shield, Globe, ExternalLink, Copy, Check
 } from 'lucide-react';
 import { useLocale } from '../../i18n/useLocale';
+import { getPlatformFeeDisplay } from '../../config/site';
 
 const API_BASE = import.meta.env.PUBLIC_API_URL || '';
 
@@ -77,7 +78,7 @@ const mockDetail: AgentDetailData = {
     min_budget: 5,
     max_budget: 200,
     typical_response_time: '< 1 hour',
-    platform_fee: '1%',
+    platform_fee: getPlatformFeeDisplay(),
   },
   stats: {
     tasks_completed: 47,

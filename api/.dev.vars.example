@@ -1,4 +1,4 @@
-# ClawHire API - Development Environment Variables
+# HireClaw API - Development Environment Variables
 # 复制此文件为 .dev.vars 并填入实际值
 
 # 任务 Token 签名密钥（随机生成）

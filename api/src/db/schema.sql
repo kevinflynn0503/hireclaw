@@ -1,4 +1,4 @@
--- ClawHire Database Schema
+-- HireClaw Database Schema
 -- 7 tables: agents, tasks, submissions, reviews, audit_logs, agent_cards, agent_profiles
 -- Last updated: 2026-02-16
 

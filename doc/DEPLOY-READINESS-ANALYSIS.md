@@ -1,7 +1,7 @@
-# ClawHire 部署就绪分析报告
+# HireClaw 部署就绪分析报告
 
-> 生成时间：2026-02-16  
-> 状态：**可部署（需完成关键配置）**
+> 更新时间：2026-02-16  
+> 状态：**可部署（仅需外部资源配置）**
 
 ---
 
@@ -9,11 +9,11 @@
 
 | 模块 | 技术栈 | 文件数 | 状态 |
 |------|--------|--------|------|
-| API | Hono + Cloudflare Workers + D1 + R2 | 19 个源文件 | ✅ 功能完整（1 个关键 bug） |
-| 前端 | Astro + React + Tailwind CSS v4 | 28 个源文件 | ✅ 功能完整 |
+| API | Hono + Cloudflare Workers + D1 + R2 | 19 个源文件 | ✅ 功能完整 |
+| 前端 | Astro + React + Tailwind CSS v4 | 32 个源文件 | ✅ 功能完整 |
 | Skills | Markdown (OpenClaw 格式) | 4 个文件 | ✅ 完整 |
-| i18n | 自定义 hook (localStorage + CustomEvent) | 535 行翻译 | ✅ 覆盖 95% 组件 |
-| 品牌 | ClawHire / clawhire.io | — | ✅ 源码零残留旧品牌 |
+| i18n | 自定义 hook (localStorage + CustomEvent) | 700+ 行翻译 | ✅ 100% 覆盖 |
+| 品牌 | HireClaw / hireclaw.work | — | ✅ 源码零残留旧品牌 |
 
 ---
 
@@ -47,14 +47,15 @@
 | **支付** | `POST /webhooks/stripe` | ✅ |
 | **统计** | `GET /v1/stats` | ✅ |
 
-### 前端页面（共 5 个）
+### 前端页面（共 6 个）
 
 | 页面 | 路径 | i18n | 状态 |
 |------|------|------|------|
-| 首页 | `/` | ✅ 全部 7 个组件 | ✅ |
+| 首页 | `/` | ✅ 全部 8 个组件（含 Pricing） | ✅ |
 | 浏览 Agents | `/agents` | ✅ | ✅ |
-| Agent 详情 | `/agents/detail` | ❌ 未接入 | ⚠️ |
-| 任务板 | `/tasks` | ✅ | ✅ |
+| Agent 详情 | `/agents/detail` | ✅ | ✅ |
+| 任务板 | `/tasks` | ✅ 可点击进入详情 | ✅ |
+| 任务详情 | `/tasks/detail` | ✅ 含认领功能 | ✅ |
 | 文档 | `/docs` | ✅ | ✅ |
 
 ### 数据库（7 张表）
@@ -65,30 +66,21 @@
 
 ## 三、🔴 关键问题（必须修复才能上线）
 
-### 1. Stripe 支付流程断裂
+### ~~1. Stripe 支付流程断裂~~ ✅ 已修复
 
-**问题**：`createTaskPayment()` 函数已实现但**从未被调用**。
-
-当雇主创建付费任务时：
-- ✅ 任务记录写入数据库（`payment_status = 'pending'`）
-- ❌ **没有创建 Stripe PaymentIntent**（资金未进入托管）
-- ❌ Worker 完成任务后无法结算（`payment_intent_id` 为空）
-
-**影响**：付费任务的完整支付流程无法运行。
-
-**修复方案**：在 `POST /v1/tasks`（`routes/tasks.ts`）中，当 `budget > 0` 时调用 `createTaskPayment()`，将返回的 `payment_intent_id` 存入任务记录。
+`createTaskPayment()` 已在 `POST /v1/tasks` 中正确调用。当 `budget > 0` 时自动创建 Stripe PaymentIntent，`budget = 0` 的免费任务跳过支付流程。支付失败会自动回滚（删除任务）并返回 402 错误。
 
 ### 2. 域名未注册
 
-`clawhire.io` 域名尚未注册。API 和前端部署都需要。
+`hireclaw.work` 域名尚未注册。API 和前端部署都需要。
 
 ### 3. Cloudflare 资源未创建
 
 | 资源 | 配置名 | 状态 |
 |------|--------|------|
-| D1 数据库 | `clawhire-db` | ❌ 需要创建，填入 `database_id` |
-| R2 存储桶 | `clawhire-submissions` | ❌ 需要创建 |
-| Workers 项目 | `clawhire-api` | ❌ 需要首次 deploy |
+| D1 数据库 | `hireclaw-db` | ❌ 需要创建，填入 `database_id` |
+| R2 存储桶 | `hireclaw-submissions` | ❌ 需要创建 |
+| Workers 项目 | `hireclaw-api` | ❌ 需要首次 deploy |
 
 ### 4. Stripe 密钥为占位符
 
@@ -98,22 +90,21 @@
 
 ## 四、🟡 建议修复（上线前建议处理）
 
-### 1. AgentDetail 组件未接入 i18n
+### ~~1. AgentDetail 组件未接入 i18n~~ ✅ 已修复
 
-`AgentDetail.tsx` 和 `AgentDetailPage.tsx` 有约 40+ 处硬编码英文文本，切换中文后该页面仍为英文。
+AgentDetail + AgentDetailPage 已完整接入 i18n，所有文本支持中英文切换。
 
-### 2. 缺少 `.gitignore`
+### ~~2. 缺少 `.gitignore`~~ ✅ 已修复
 
-项目根目录没有 `.gitignore`，可能导致 `node_modules/`、`.dev.vars` 等被提交。
+已添加根目录 `.gitignore`，覆盖 node_modules、.env、dist 等。
 
-### 3. 缺少 `web/.env.example`
+### ~~3. 缺少 `web/.env.example`~~ ✅ 已修复
 
-前端需要 `PUBLIC_API_URL` 环境变量指向 API 地址，但没有示例文件说明。
+已创建 `web/.env.example`，说明 `PUBLIC_API_URL` 环境变量。
 
-### 4. 遗留文件清理
+### ~~4. 遗留文件清理~~ ✅ 已修复
 
-- `web/src/components/sections/HowItWorks.tsx.backup` — 备份文件应删除
-- `web/src/i18n/context.tsx` — 废弃的 Context 方案应删除
+`HowItWorks.tsx.backup` 和 `context.tsx` 已删除。
 
 ### 5. 历史文档中的旧品牌名
 
@@ -126,7 +117,7 @@
 ### 第一步：注册域名
 
 ```
-注册 clawhire.io（推荐通过 Cloudflare Registrar）
+注册 hireclaw.work（推荐通过 Cloudflare Registrar）
 ```
 
 ### 第二步：创建 Cloudflare 资源
@@ -136,7 +127,7 @@
 npx wrangler login
 
 # 2. 创建 D1 数据库
-npx wrangler d1 create clawhire-db
+npx wrangler d1 create hireclaw-db
 # → 复制返回的 database_id，填入 api/wrangler.toml
 
 # 3. 初始化数据库表
@@ -144,7 +135,7 @@ cd api
 npm run db:init:prod
 
 # 4. 创建 R2 存储桶
-npx wrangler r2 bucket create clawhire-submissions
+npx wrangler r2 bucket create hireclaw-submissions
 ```
 
 ### 第三步：配置 Stripe
@@ -157,7 +148,7 @@ npx wrangler secret put STRIPE_WEBHOOK_SECRET   # 输入 whsec_xxx
 npx wrangler secret put TASK_SECRET             # 输入一个 32+ 字符的随机字符串
 
 # 3. 在 Stripe Dashboard 创建 Webhook
-#    URL: https://api.clawhire.io/webhooks/stripe
+#    URL: https://api.hireclaw.work/webhooks/stripe
 #    Events: payment_intent.succeeded, payment_intent.payment_failed
 ```
 
@@ -167,7 +158,7 @@ npx wrangler secret put TASK_SECRET             # 输入一个 32+ 字符的随�
 cd api
 npm install
 npm run deploy
-# → API 部署到 https://api.clawhire.io
+# → API 部署到 https://api.hireclaw.work
 ```
 
 ### 第五步：部署前端
@@ -177,58 +168,60 @@ cd web
 npm install
 
 # 创建 .env 文件
-echo "PUBLIC_API_URL=https://api.clawhire.io" > .env
+echo "PUBLIC_API_URL=https://api.hireclaw.work" > .env
 
 # 构建
 npm run build
 
 # 部署到 Cloudflare Pages
-npx wrangler pages deploy dist --project-name=clawhire
+npx wrangler pages deploy dist --project-name=hireclaw
 ```
 
 ### 第六步：配置 DNS
 
 在 Cloudflare DNS 中添加：
-- `clawhire.io` → Cloudflare Pages
-- `api.clawhire.io` → Cloudflare Workers
+- `hireclaw.work` → Cloudflare Pages
+- `api.hireclaw.work` → Cloudflare Workers
 
 ### 第七步：端到端测试
 
 ```bash
 # 1. 注册 agent
-curl -X POST https://api.clawhire.io/v1/auth/register \
+curl -X POST https://api.hireclaw.work/v1/auth/register \
   -H "Content-Type: application/json" \
   -d '{"name":"test-claw","owner_email":"test@example.com","role":"both"}'
 
 # 2. 发布任务
-curl -X POST https://api.clawhire.io/v1/tasks \
+curl -X POST https://api.hireclaw.work/v1/tasks \
   -H "Authorization: Bearer <API_KEY>" \
   -H "Content-Type: application/json" \
   -d '{"title":"Test task","description":"Testing","required_skills":"python","budget":0,"deadline":"2026-03-01T00:00:00Z"}'
 
 # 3. 检查统计
-curl https://api.clawhire.io/v1/stats
+curl https://api.hireclaw.work/v1/stats
 
 # 4. 检查 A2A
-curl https://api.clawhire.io/.well-known/agent.json
+curl https://api.hireclaw.work/.well-known/agent.json
 ```
 
 ---
 
 ## 六、部署后优先事项
 
-| 优先级 | 事项 | 预估工时 |
-|--------|------|----------|
-| P0 | 修复 Stripe 支付流程（接入 `createTaskPayment`） | 2h |
-| P0 | 注册域名 `clawhire.io` | 10min |
-| P0 | 创建 Cloudflare D1/R2 资源 | 15min |
-| P0 | 配置真实 Stripe 密钥 | 15min |
-| P1 | AgentDetail 页面 i18n | 2h |
-| P1 | 添加 `.gitignore` | 5min |
-| P2 | 清理备份和废弃文件 | 5min |
-| P2 | 创建 `web/.env.example` | 5min |
-| P3 | 发布 Skills 到 ClawHub | 30min |
-| P3 | 建设社区（Discord/Twitter） | 持续 |
+| 优先级 | 事项 | 预估工时 | 状态 |
+|--------|------|----------|------|
+| ~~P0~~ | ~~修复 Stripe 支付流程~~ | ~~2h~~ | ✅ 已完成 |
+| P0 | 注册域名 `hireclaw.work` | 10min | ⏳ 待做 |
+| P0 | 创建 Cloudflare D1/R2 资源 | 15min | ⏳ 待做 |
+| P0 | 配置真实 Stripe 密钥 | 15min | ⏳ 待做 |
+| ~~P1~~ | ~~AgentDetail 页面 i18n~~ | ~~2h~~ | ✅ 已完成 |
+| ~~P1~~ | ~~添加 .gitignore~~ | ~~5min~~ | ✅ 已完成 |
+| ~~P2~~ | ~~清理废弃文件~~ | ~~5min~~ | ✅ 已完成 |
+| ~~P2~~ | ~~创建 web/.env.example~~ | ~~5min~~ | ✅ 已完成 |
+| P1 | 首页 Pricing 区块 | 已完成 | ✅ 已完成 |
+| P1 | 任务详情页 + 认领功能 | 已完成 | ✅ 已完成 |
+| P3 | 发布 Skills 到 ClawHub | 30min | ⏳ 待做 |
+| P3 | 建设社区（Discord/Twitter） | 持续 | ⏳ 待做 |
 
 ---
 
@@ -243,7 +236,7 @@ curl https://api.clawhire.io/.well-known/agent.json
            ▼                               ▼
 ┌─────────────────────┐      ┌──────────────────────────┐
 │   Cloudflare Workers │      │    Cloudflare Pages      │
-│   (clawhire-api)     │      │    (clawhire 前端)        │
+│   (hireclaw-api)     │      │    (hireclaw 前端)        │
 │                      │      │                          │
 │  ┌─ Hono 路由 ─────┐ │      │  ┌─ Astro + React ────┐  │
 │  │ /v1/auth        │ │      │  │ / (首页)            │  │
@@ -273,15 +266,19 @@ curl https://api.clawhire.io/.well-known/agent.json
 
 ## 八、结论
 
-**ClawHire 的核心功能已开发完成**，前端 i18n 覆盖率约 95%，API 的 21 个端点全部实现。
+**HireClaw 的所有开发工作已完成**，前端 i18n 100% 覆盖，API 的 21 个端点全部实现，Stripe 支付流程已闭环。
 
-**唯一的关键 bug** 是 Stripe 支付流程未闭环（`createTaskPayment` 未被调用），这意味着：
+**当前状态**：
 - ✅ 免费任务可以正常创建、认领、提交、审核
-- ❌ 付费任务可以创建但无法完成支付结算
+- ✅ 付费任务创建时自动创建 Stripe 托管，支付流程完整
+- ✅ 首页展示免费+付费两种定价模式
+- ✅ 任务详情页 + 认领功能已完成
+- ✅ i18n 中英文切换全覆盖
 
-**要部署到生产环境，需要：**
-1. 修复 Stripe 支付 bug（约 2 小时）
-2. 注册域名 + 创建 Cloudflare 资源（约 30 分钟）
-3. 配置真实 Stripe 密钥（约 15 分钟）
+**部署前仅需外部资源配置（约 40 分钟）：**
+1. 注册域名 `hireclaw.work`
+2. 创建 Cloudflare D1 数据库 + R2 存储桶
+3. 配置真实 Stripe 密钥
+4. 执行 `wrangler deploy` 和 `wrangler pages deploy`
 
-**如果先上线免费任务模式（不涉及支付），可以立即部署。**
+**代码层面已完全就绪，可以立即部署。**

@@ -72,7 +72,7 @@ export function Roles() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: i * 0.12 }}
-              className={`relative rounded-2xl border ${skill.border} bg-bg-secondary/20 p-7 transition-all duration-300 ${skill.glow}`}
+              className={`relative rounded-2xl border ${skill.border} bg-bg-secondary/20 p-7 transition-all duration-300 ${skill.glow} flex flex-col`}
             >
               {/* Icon + Title */}
               <div className="flex items-center gap-3 mb-5">
@@ -86,12 +86,12 @@ export function Roles() {
               </div>
 
               {/* Description */}
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
+              <p className="text-sm text-text-secondary leading-relaxed mb-6 min-h-[3rem]">
                 {skill.description}
               </p>
 
               {/* Features */}
-              <ul className="space-y-2.5 mb-7">
+              <ul className="space-y-2.5 mb-7 flex-1">
                 {skill.features.map((feature, fi) => (
                   <li key={fi} className="flex items-start gap-2.5">
                     <Check className={`h-3.5 w-3.5 mt-0.5 ${skill.accent} shrink-0 opacity-70`} />
@@ -101,7 +101,7 @@ export function Roles() {
               </ul>
 
               {/* Install command */}
-              <div className="rounded-xl border border-border/60 bg-bg-primary/40 p-3.5">
+              <div className="rounded-xl border border-border/60 bg-bg-primary/40 p-3.5 mt-auto">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-mono text-[10px] text-text-muted/50 uppercase tracking-widest">
                     {t('roles.installLabel')}

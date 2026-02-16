@@ -7,7 +7,7 @@ export function InstallCommand({ className = '' }: { className?: string }) {
   const { t } = useLocale();
 
   return (
-    <div className={`w-full max-w-2xl ${className}`}>
+    <div className={`w-full ${className}`}>
       {/* Command block */}
       <div className="group relative rounded-xl border border-border bg-bg-secondary/50 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-border-hover hover:shadow-[0_0_40px_rgba(34,197,94,0.04)]">
         {/* Header */}

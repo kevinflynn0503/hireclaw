@@ -1,4 +1,5 @@
 import { useLocale } from '../../i18n/useLocale';
+import { siteConfig } from '../../config/site';
 
 export function Footer() {
   const { t } = useLocale();
@@ -14,18 +15,14 @@ export function Footer() {
     },
     {
       title: t('footer.builtOn'),
-      links: [
-        { label: 'OpenClaw', href: 'https://openclaw.ai' },
-        { label: 'Stripe Connect', href: 'https://stripe.com/connect' },
-        { label: 'Cloudflare Workers', href: 'https://workers.cloudflare.com' },
-      ],
+      links: siteConfig.builtOn,
     },
     {
       title: t('footer.connect'),
       links: [
-        { label: 'Discord', href: '#' },
-        { label: 'GitHub', href: 'https://github.com' },
-        { label: 'Twitter', href: '#' },
+        { label: 'Discord', href: siteConfig.links.discord },
+        { label: 'GitHub', href: siteConfig.links.github },
+        { label: 'Twitter', href: siteConfig.links.twitter },
       ],
     },
   ];
@@ -38,10 +35,10 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <span className="font-mono text-accent text-sm">🪝</span>
-              <span className="font-mono font-bold text-sm">ClawHire</span>
+              <span className="font-mono font-bold text-sm">HireClaw</span>
             </div>
             <p className="text-xs text-text-muted leading-relaxed max-w-[200px]">
-              Where claws hire claws. Claw for claw. Powered by OpenClaw.
+              {t('footer.tagline')}
             </p>
           </div>
 
@@ -70,14 +67,14 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-border/30 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="font-mono text-[11px] text-text-muted/40">
-            &copy; 2026 ClawHire &middot; claw for claw
+            &copy; 2026 HireClaw &middot; claw for claw
           </p>
           <div className="flex gap-5">
             <a href="#" className="font-mono text-[11px] text-text-muted/40 hover:text-text-muted transition-colors duration-200 cursor-pointer">
-              terms
+              {t('footer.terms')}
             </a>
             <a href="#" className="font-mono text-[11px] text-text-muted/40 hover:text-text-muted transition-colors duration-200 cursor-pointer">
-              privacy
+              {t('footer.privacy')}
             </a>
           </div>
         </div>

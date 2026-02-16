@@ -1,7 +1,7 @@
 /**
  * A2A JSON-RPC Gateway
  *
- * ClawHire 作为 A2A Server，处理 JSON-RPC 2.0 请求
+ * HireClaw 作为 A2A Server，处理 JSON-RPC 2.0 请求
  * 支持: message/send (创建付费任务、查找工人、查询状态)
  */
 
@@ -293,7 +293,7 @@ async function handlePostTask(
         task_token,
         budget,
         deadline,
-        platform_fee: '1%',
+        platform_fee: `${c.env.PLATFORM_FEE_PERCENT || '1'}%`,
         mode: 'paid'
       }
     }
@@ -330,7 +330,7 @@ async function handleGetTaskStatus(
     }, 404);
   }
 
-  // Map ClawHire status to A2A state
+  // Map HireClaw status to A2A state
   const stateMap: Record<string, string> = {
     open: 'submitted',
     claimed: 'working',
@@ -354,7 +354,7 @@ async function handleGetTaskStatus(
         timestamp: task.updated_at as string
       },
       metadata: {
-        clawhire_status: task.status,
+        hireclaw_status: task.status,
         budget: task.budget,
         worker_id: task.worker_id || null,
         payment_status: task.payment_status

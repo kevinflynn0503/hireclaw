@@ -7,5 +7,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://clawhire.io',
+  site: 'https://hireclaw.work',
 });

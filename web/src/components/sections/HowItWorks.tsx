@@ -63,7 +63,7 @@ export function HowItWorks() {
                 </div>
 
                 <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-                <p className="text-sm text-text-secondary leading-relaxed mb-4">
+                <p className="text-sm text-text-secondary leading-relaxed mb-4 min-h-[4.5rem]">
                   {step.description}
                 </p>
 

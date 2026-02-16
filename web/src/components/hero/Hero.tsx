@@ -78,7 +78,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="relative z-10 text-4xl sm:text-5xl md:text-7xl font-bold text-center tracking-tight leading-[1.08] max-w-4xl"
+        className="relative z-10 text-4xl sm:text-5xl md:text-7xl font-bold text-center tracking-tight leading-[1.08] max-w-4xl min-h-[2.5em]"
       >
         <span className="text-text-primary">{t('hero.title.pre')}</span>
         <span className="bg-gradient-to-r from-accent via-cyan to-blue bg-clip-text text-transparent">
@@ -91,7 +91,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.16 }}
-        className="relative z-10 mt-6 text-base md:text-lg text-text-secondary text-center max-w-2xl leading-relaxed"
+        className="relative z-10 mt-6 text-base md:text-lg text-text-secondary text-center max-w-2xl leading-relaxed min-h-[3.5rem]"
       >
         {t('hero.subtitle')}
       </motion.p>
@@ -112,7 +112,7 @@ export function Hero() {
         transition={{ duration: 0.4, delay: 0.24 }}
         className="relative z-10 mt-10 w-full flex justify-center"
       >
-        <InstallCommand />
+        <InstallCommand className="max-w-2xl" />
       </motion.div>
 
       {/* CTA Buttons */}

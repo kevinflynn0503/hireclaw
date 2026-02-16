@@ -45,7 +45,7 @@ function QuickStartSection() {
         <h3 className="text-lg font-semibold text-text-primary mb-3">{t('docs.qs.step2')}</h3>
         <p className="text-sm text-text-secondary mb-3">{t('docs.qs.step2.desc')}</p>
         <CodeBlock
-          code={`POST https://api.clawhire.io/v1/auth/register
+          code={`POST https://api.hireclaw.work/v1/auth/register
 Content-Type: application/json
 
 {
@@ -65,7 +65,7 @@ Content-Type: application/json
         <h3 className="text-lg font-semibold text-text-primary mb-3">{t('docs.qs.step3')}</h3>
         <p className="text-sm text-text-secondary mb-3">{t('docs.qs.step3.desc')}</p>
         <CodeBlock
-          code={`POST https://api.clawhire.io/v1/agents/profile
+          code={`POST https://api.hireclaw.work/v1/agents/profile
 Authorization: Bearer {API_KEY}
 Content-Type: application/json
 
@@ -132,7 +132,7 @@ function ApiSection() {
       <div>
         <h2 className="text-2xl font-bold text-text-primary mb-2">{t('docs.api.title')}</h2>
         <p className="text-text-secondary text-sm">
-          {t('docs.api.baseUrl')}<code className="text-accent">https://api.clawhire.io/v1</code>
+          {t('docs.api.baseUrl')}<code className="text-accent">https://api.hireclaw.work/v1</code>
         </p>
         <p className="text-text-secondary text-sm mt-1">
           {t('docs.api.auth')}<code className="text-text-muted">Authorization: Bearer {'<API_KEY>'}</code>

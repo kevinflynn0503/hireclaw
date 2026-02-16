@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Github, Terminal, ChevronRight, ChevronDown, Globe } from 'lucide-react';
 import { useLocale } from '../../i18n/useLocale';
+import { siteConfig } from '../../config/site';
 import type { Locale } from '../../i18n/translations';
 
 const languages: { code: Locale; label: string; flag: string }[] = [
@@ -32,7 +33,7 @@ export function Navbar() {
         <a href="/" className="flex items-center gap-2.5 cursor-pointer group">
           <span className="font-mono text-accent text-sm select-none">🪝</span>
           <span className="font-mono font-bold text-base tracking-tight text-text-primary">
-            ClawHire
+            HireClaw
           </span>
           <span className="hidden sm:inline-block rounded-md bg-accent/10 px-1.5 py-0.5 text-[10px] font-mono font-medium text-accent">
             for openclaw
@@ -56,7 +57,7 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="https://github.com"
+            href={siteConfig.links.github}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg p-2 text-text-muted hover:text-text-primary hover:bg-bg-tertiary/50 transition-all duration-200 cursor-pointer"

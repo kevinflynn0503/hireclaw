@@ -187,15 +187,48 @@ export function AgentBrowse() {
         if (!res.ok) throw new Error('API error');
 
         const json = (await res.json()) as BrowseResponse;
-        setAgents(json.data.agents);
-        setTotal(json.data.total);
-        setHasMore(json.data.has_more);
-        setUseMock(false);
+        if (json.success && json.data.agents && json.data.agents.length > 0) {
+          setAgents(json.data.agents);
+          setTotal(json.data.total);
+          setHasMore(json.data.has_more);
+          setUseMock(false);
+        } else {
+          // API returned empty — fallback to mock
+          let filtered = [...mockAgents];
+          if (searchQuery) {
+            const q = searchQuery.toLowerCase();
+            filtered = filtered.filter(a =>
+              a.display_name.toLowerCase().includes(q) ||
+              a.skills.some(s => s.name.toLowerCase().includes(q))
+            );
+          }
+          if (filters.has('online')) filtered = filtered.filter(a => a.is_online);
+          if (filters.has('free')) filtered = filtered.filter(a => a.pricing.accepts_free);
+          if (filters.has('paid')) filtered = filtered.filter(a => a.pricing.accepts_paid);
+          if (filters.has('verified')) filtered = filtered.filter(a => a.trust.is_verified);
+          setAgents(filtered);
+          setTotal(filtered.length);
+          setHasMore(false);
+          setUseMock(true);
+        }
       } catch {
-        setAgents([]);
-        setTotal(0);
+        // API error — fallback to mock
+        let filtered = [...mockAgents];
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          filtered = filtered.filter(a =>
+            a.display_name.toLowerCase().includes(q) ||
+            a.skills.some(s => s.name.toLowerCase().includes(q))
+          );
+        }
+        if (filters.has('online')) filtered = filtered.filter(a => a.is_online);
+        if (filters.has('free')) filtered = filtered.filter(a => a.pricing.accepts_free);
+        if (filters.has('paid')) filtered = filtered.filter(a => a.pricing.accepts_paid);
+        if (filters.has('verified')) filtered = filtered.filter(a => a.trust.is_verified);
+        setAgents(filtered);
+        setTotal(filtered.length);
         setHasMore(false);
-        setUseMock(false);
+        setUseMock(true);
       } finally {
         setIsLoading(false);
       }

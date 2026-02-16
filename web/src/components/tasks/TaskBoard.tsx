@@ -164,14 +164,40 @@ export function TaskBoard() {
         const res = await fetch(`${API_BASE}/v1/tasks?${params}`, { signal: controller.signal });
         if (!res.ok) throw new Error('API error');
 
-        const json = await res.json() as { success: boolean; data: { tasks: TaskItem[]; total: number } };
-        setTasks(json.data.tasks);
-        setTotal(json.data.total);
-        setUseMock(false);
+        const json = await res.json() as { success: boolean; data: { items: TaskItem[]; total: number } };
+        if (json.success && json.data.items && json.data.items.length > 0) {
+          setTasks(json.data.items);
+          setTotal(json.data.total);
+          setUseMock(false);
+        } else {
+          // API returned empty — fallback to mock
+          let filtered = [...mockTasks];
+          if (statusFilter !== 'all') filtered = filtered.filter(item => item.status === statusFilter);
+          if (searchQuery) {
+            const q = searchQuery.toLowerCase();
+            filtered = filtered.filter(item =>
+              item.title.toLowerCase().includes(q) ||
+              item.skills.some(s => s.toLowerCase().includes(q))
+            );
+          }
+          setTasks(filtered);
+          setTotal(filtered.length);
+          setUseMock(true);
+        }
       } catch {
-        setTasks([]);
-        setTotal(0);
-        setUseMock(false);
+        // API error — fallback to mock
+        let filtered = [...mockTasks];
+        if (statusFilter !== 'all') filtered = filtered.filter(item => item.status === statusFilter);
+        if (searchQuery) {
+          const q = searchQuery.toLowerCase();
+          filtered = filtered.filter(item =>
+            item.title.toLowerCase().includes(q) ||
+            item.skills.some(s => s.toLowerCase().includes(q))
+          );
+        }
+        setTasks(filtered);
+        setTotal(filtered.length);
+        setUseMock(true);
       } finally {
         setIsLoading(false);
       }
@@ -274,12 +300,13 @@ export function TaskBoard() {
             const colors = statusColors[task.status];
             const statusLabel = t(`taskBoard.status.${task.status}`);
             return (
-              <motion.div
+              <motion.a
                 key={task.id}
+                href={`/tasks/detail?id=${task.id}`}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.03 }}
-                className="rounded-xl border border-border bg-bg-card hover:bg-bg-card-hover hover:border-border-hover transition-all p-5 group"
+                className="block rounded-xl border border-border bg-bg-card hover:bg-bg-card-hover hover:border-border-hover transition-all p-5 group cursor-pointer"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
@@ -305,14 +332,15 @@ export function TaskBoard() {
                   </div>
                   <div className="flex flex-col items-end gap-2 flex-shrink-0">
                     <span className="text-lg font-bold text-accent font-mono">
-                      ${task.budget.toFixed(2)}
+                      {task.budget > 0 ? `$${task.budget.toFixed(2)}` : t('taskDetail.free')}
                     </span>
                     <span className="text-xs text-text-muted flex items-center gap-1">
                       <Clock className="h-3 w-3" /> {timeAgo(task.created_at)}
                     </span>
+                    <ArrowUpRight className="h-4 w-4 text-text-muted opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             );
           })}
         </div>

@@ -1,5 +1,5 @@
 /**
- * ClawHire API Types
+ * HireClaw API Types
  * 
  * 定义所有数据模型和环境类型
  */

@@ -1,4 +1,4 @@
-name = "clawhire-api"
+name = "hireclaw-api"
 main = "src/index.ts"
 compatibility_date = "2025-01-15"
 workers_dev = true
@@ -13,13 +13,13 @@ TOKEN_EXPIRY_HOURS = "24"
 # D1 数据库绑定
 [[d1_databases]]
 binding = "DB"
-database_name = "clawhire-db"
-database_id = "your-database-id-here"  # 运行 wrangler d1 create clawhire-db 后填入
+database_name = "hireclaw-db"
+database_id = "257c5a60-d756-474e-b7d3-4fb38fa06cc8"
 
 # R2 存储绑定
 [[r2_buckets]]
 binding = "R2"
-bucket_name = "clawhire-submissions"
+bucket_name = "hireclaw-submissions"
 
 # 秘密配置（使用 wrangler secret put 设置）
 # TASK_SECRET - 用于 HMAC 签名任务 Token
@@ -33,4 +33,4 @@ vars = { ENVIRONMENT = "development" }
 # 生产环境配置
 [env.production]
 vars = { ENVIRONMENT = "production" }
-routes = [{ pattern = "api.clawhire.io/*", zone_name = "clawhire.io" }]
+routes = [{ pattern = "api.hireclaw.work/*", zone_name = "hireclaw.work" }]

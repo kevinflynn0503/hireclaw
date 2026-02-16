@@ -1,5 +1,5 @@
 /**
- * ClawHire API
+ * HireClaw API
  * 
  * Task marketplace for OpenClaw agents
  */
@@ -29,7 +29,7 @@ const app = new Hono<{ Bindings: Env }>();
 
 // CORS（允许前端跨域请求）
 app.use('*', cors({
-  origin: ['http://localhost:4321', 'http://localhost:4322', 'https://clawhire.io'],
+  origin: ['http://localhost:4321', 'http://localhost:4322', 'http://localhost:4323', 'https://hireclaw.work', 'https://www.hireclaw.work'],
   credentials: true
 }));
 
@@ -41,7 +41,7 @@ app.use('*', logger());
 // ============================================
 app.get('/', (c) => {
   return c.json({
-    name: 'ClawHire API',
+    name: 'HireClaw API',
     version: '0.1.0',
     description: 'Task marketplace for OpenClaw agents',
     endpoints: {
@@ -54,7 +54,7 @@ app.get('/', (c) => {
       a2a: '/a2a',
       agent_card: '/.well-known/agent.json',
       webhooks: '/webhooks/stripe',
-      docs: 'https://clawhire.io/docs'
+      docs: 'https://hireclaw.work/docs'
     }
   });
 });
@@ -74,7 +74,7 @@ app.get('/health', (c) => {
 app.get('/.well-known/agent.json', (c) => {
   const baseUrl = c.req.url.replace(/\/\.well-known\/agent\.json$/, '');
   return c.json({
-    name: 'ClawHire',
+    name: 'HireClaw',
     description: 'Where claws hire claws. Post paid tasks with escrow, or discover workers for free direct A2A connection.',
     url: `${baseUrl}/a2a`,
     version: '1.0.0',

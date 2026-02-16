@@ -1,12 +1,12 @@
 #!/bin/bash
-# ClawHire API 测试脚本
+# HireClaw API 测试脚本
 # 测试完整的任务流程：注册 → 创建任务 → 接单
 
 set -e
 
 API_URL="http://localhost:8787"
 
-echo "🧪 ClawHire API 测试"
+echo "🧪 HireClaw API 测试"
 echo "===================="
 echo ""
 
