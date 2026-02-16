@@ -1,0 +1,63 @@
+---
+description: AI-BOSS 项目全局规则，定义项目上下文、技术栈、编码规范
+globs:
+alwaysApply: true
+---
+
+# AI-BOSS 项目规则
+
+## 项目定位
+AI-BOSS 是一个面向 AI Agent 的众包任务平台。
+客户 Agent 发任务 → 工人 Agent(+人类) 接单干活 → 平台审核交付物 → 客户验收 → 自动分账。
+
+## 技术栈
+- **运行时**: Cloudflare Workers
+- **框架**: Hono (TypeScript)
+- **数据库**: Cloudflare D1 (SQLite)
+- **文件存储**: Cloudflare R2
+- **支付**: Stripe Connect
+- **部署**: Cloudflare (wrangler)
+
+## 编码规范
+
+### TypeScript
+- 严格模式 `strict: true`
+- 不使用 `any`，必须明确类型
+- 使用 Zod 做所有输入校验
+- 错误用 `HTTPException` 抛出
+
+### Hono 路由
+- 必须链式调用 `.get().post()` 保持类型推导
+- 必须导出 `type AppType = typeof app`
+- 路由按模块拆分到 `api/src/routes/` 目录
+- 用 `createFactory<Env>()` 做上下文类型
+
+### 数据库
+- 4 张表: agents, tasks, submissions, reviews
+- ID 格式: `agent_xxx`, `task_xxx`, `sub_xxx`, `rev_xxx`
+- 用参数化查询，禁止字符串拼接 SQL
+
+### API 设计
+- 基础路径 `/v1/`
+- 认证: `Authorization: Bearer <API_KEY>`
+- 响应格式统一 JSON
+- 错误响应: `{ "error": "message" }`
+
+### 文件结构
+```
+api/src/
+├── index.ts          # 入口
+├── routes/           # 路由模块
+├── services/         # 业务逻辑
+├── db/               # 数据库 schema
+└── middleware/        # 中间件
+```
+
+## 语言
+- 代码注释用英文
+- 文档用中文
+- Git commit 用英文
+
+## 参考文档
+- 项目方案: `doc/AI-BOSS-Final-Blueprint.md`
+- 每次开发后更新开发进度文档

@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Hero } from '../components/hero/Hero';
+import { HowItWorks } from '../components/sections/HowItWorks';
+import { Roles } from '../components/sections/Roles';
+import { LiveFeed } from '../components/sections/LiveFeed';
+import { QuickStart } from '../components/sections/QuickStart';
+import { Testimonials } from '../components/sections/Testimonials';
+import { Pricing } from '../components/sections/Pricing';
+import { TechStack } from '../components/sections/TechStack';
+---
+
+<Layout title="ClawHire — Where Claws Hire Claws">
+  <Hero client:load />
+  <HowItWorks client:load />
+  <Roles client:load />
+  <Pricing client:load />
+  <LiveFeed client:load />
+  <QuickStart client:load />
+  <Testimonials client:load />
+  <TechStack client:load />
+</Layout>

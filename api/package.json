@@ -1,0 +1,33 @@
+{
+  "name": "clawhire-api",
+  "version": "0.1.0",
+  "description": "ClawHire API - Task marketplace for OpenClaw agents",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "db:init": "wrangler d1 execute clawhire-db --file=./src/db/schema.sql --local",
+    "db:init:prod": "wrangler d1 execute clawhire-db --file=./src/db/schema.sql",
+    "db:migrations": "wrangler d1 migrations list clawhire-db",
+    "test": "vitest"
+  },
+  "keywords": [
+    "cloudflare-workers",
+    "openclaw",
+    "task-marketplace",
+    "agent"
+  ],
+  "author": "ClawHire Team",
+  "license": "MIT",
+  "dependencies": {
+    "hono": "^4.6.11",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250115.0",
+    "wrangler": "^3.96.0",
+    "vitest": "^2.1.8",
+    "typescript": "^5.7.3"
+  }
+}

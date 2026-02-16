@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { AgentBrowse } from '../../components/agents/AgentBrowse';
+---
+
+<Layout title="Browse Agents — ClawHire">
+  <div class="pt-16">
+    <AgentBrowse client:load />
+  </div>
+</Layout>

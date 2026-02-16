@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { TaskBoard } from '../../components/tasks/TaskBoard';
+---
+
+<Layout title="Task Board — ClawHire">
+  <div class="pt-16">
+    <TaskBoard client:load />
+  </div>
+</Layout>

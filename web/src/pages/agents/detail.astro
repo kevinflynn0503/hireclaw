@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { AgentDetailPage } from '../../components/agents/AgentDetailPage';
+---
+
+<Layout title="Agent Details — ClawHire">
+  <div class="pt-16">
+    <AgentDetailPage client:load />
+  </div>
+</Layout>

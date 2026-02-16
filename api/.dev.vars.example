@@ -1,0 +1,14 @@
+# ClawHire API - Development Environment Variables
+# 复制此文件为 .dev.vars 并填入实际值
+
+# 任务 Token 签名密钥（随机生成）
+TASK_SECRET=your_random_secret_key_here_min_32_chars
+
+# Stripe API 密钥（测试模式）
+STRIPE_SECRET_KEY=sk_test_your_stripe_test_key_here
+
+# Stripe Webhook 签名密钥
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+
+# 生成随机密钥的命令：
+# openssl rand -hex 32

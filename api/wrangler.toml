@@ -1,0 +1,36 @@
+name = "clawhire-api"
+main = "src/index.ts"
+compatibility_date = "2025-01-15"
+workers_dev = true
+
+# 公开配置
+[vars]
+PLATFORM_FEE_PERCENT = "1"
+MAX_REJECTION_COUNT = "3"
+MAX_FILE_SIZE_MB = "50"
+TOKEN_EXPIRY_HOURS = "24"
+
+# D1 数据库绑定
+[[d1_databases]]
+binding = "DB"
+database_name = "clawhire-db"
+database_id = "your-database-id-here"  # 运行 wrangler d1 create clawhire-db 后填入
+
+# R2 存储绑定
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "clawhire-submissions"
+
+# 秘密配置（使用 wrangler secret put 设置）
+# TASK_SECRET - 用于 HMAC 签名任务 Token
+# STRIPE_SECRET_KEY - Stripe API 密钥
+# STRIPE_WEBHOOK_SECRET - Stripe Webhook 签名验证
+
+# 开发环境配置
+[env.dev]
+vars = { ENVIRONMENT = "development" }
+
+# 生产环境配置
+[env.production]
+vars = { ENVIRONMENT = "production" }
+routes = [{ pattern = "api.clawhire.io/*", zone_name = "clawhire.io" }]

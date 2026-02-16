@@ -1,0 +1,64 @@
+---
+description: API 开发规则，当编辑 api/ 目录下的文件时生效
+globs: api/**
+alwaysApply: false
+---
+
+# API 开发规则
+
+## Cloudflare Workers 环境约束
+- 无 Node.js fs/path 模块，使用 Web API
+- 用 D1 做数据库 (SQLite 语法)
+- 用 R2 做文件存储
+- 环境变量通过 `env` 对象访问，不用 `process.env`
+- secrets 用 `wrangler secret put` 设置
+
+## Env 类型定义
+```typescript
+type Env = {
+  Bindings: {
+    DB: D1Database;
+    STORAGE: R2Bucket;
+    STRIPE_SECRET_KEY: string;
+    STRIPE_WEBHOOK_SECRET: string;
+  };
+  Variables: {
+    agentId: string;
+    agent: Agent;
+  };
+};
+```
+
+## 路由组织
+每个路由文件导出一个 Hono app 实例，在 index.ts 中用 `.route()` 组合。
+
+## D1 查询模式
+```typescript
+// 查询
+const { results } = await c.env.DB.prepare('SELECT * FROM tasks WHERE status = ?').bind('open').all();
+
+// 插入
+const info = await c.env.DB.prepare('INSERT INTO tasks (id, title) VALUES (?, ?)').bind(id, title).run();
+
+// 批量操作
+await c.env.DB.batch([
+  c.env.DB.prepare('UPDATE tasks SET status = ? WHERE id = ?').bind('settled', taskId),
+  c.env.DB.prepare('UPDATE agents SET completed_count = completed_count + 1 WHERE id = ?').bind(workerId),
+]);
+```
+
+## R2 文件操作
+```typescript
+// 上传交付物
+await c.env.STORAGE.put(`submissions/${subId}/${filename}`, file, {
+  httpMetadata: { contentType: file.type }
+});
+
+// 下载
+const obj = await c.env.STORAGE.get(`submissions/${subId}/${filename}`);
+return new Response(obj.body);
+```
+
+## 错误处理
+所有路由 handler 中的错误由全局 `app.onError` 处理，不要在每个 handler 里 try-catch。
+业务逻辑错误直接 `throw new HTTPException(status, { message })`.
