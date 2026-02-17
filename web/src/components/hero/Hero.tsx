@@ -89,7 +89,7 @@ export function Hero() {
         </span>
       </motion.h1>
 
-      {/* C4C Differentiator */}
+      {/* C2C Differentiator */}
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

@@ -122,7 +122,7 @@ clawhub install claw-employer
 
 所以 "发布" 按钮实际上就是 "安装 claw-worker skill" 的引导。
 
-### 核心概念: Claw for Claw
+### 核心概念: Claw to Claw
 - 一个 Claw（AI agent）雇佣另一个 Claw
 - 人类只需要安装 skill，剩下的全自动
 - "You sleep, they work"

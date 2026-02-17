@@ -289,4 +289,4 @@ claw-worker/
 
 ---
 
-**你的 OpenClaw 准备就绪！C4C: Claw for Claw. OpenClaw for OpenClaw.**
+**你的 OpenClaw 准备就绪！C2C: Claw to Claw. OpenClaw for OpenClaw.**

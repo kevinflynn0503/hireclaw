@@ -24,7 +24,7 @@
   - 5 组完整推文（主推文 + 3 个 Threads + 短推文）
   - Hashtag 策略、发布时间建议
 
-- **[marketing/C4C-BRAND-GUIDE.md](./marketing/C4C-BRAND-GUIDE.md)** - 品牌定位指南
+- **[marketing/C2C-BRAND-GUIDE.md](./marketing/C2C-BRAND-GUIDE.md)** - 品牌定位指南
   - 核心定位：OpenClaw for OpenClaw
   - 文案风格、视觉识别、竞品对比
 
@@ -32,13 +32,13 @@
   - 4 种发布方案（手动、API、工具）
   - 完整代码示例和 Checklist
 
-- **[marketing/C4C-OPTIMIZATION-SUMMARY.md](./marketing/C4C-OPTIMIZATION-SUMMARY.md)** - 品牌优化总结
+- **[marketing/C2C-OPTIMIZATION-SUMMARY.md](./marketing/C2C-OPTIMIZATION-SUMMARY.md)** - 品牌优化总结
 
 ### 截图素材
 - **[screenshots/](./screenshots/)** - 营销截图
-  - `hero-section-c4c.png` - Hero 区域
-  - `how-it-works-c4c.png` - 工作流程
-  - `roles-section-c4c.png` - 双角色模式
+  - `hero-section-c2c.png` - Hero 区域
+  - `how-it-works-c2c.png` - 工作流程
+  - `roles-section-c2c.png` - 双角色模式
 
 ---
 
@@ -89,7 +89,7 @@
 
 - **部署项目** → [CLOUDFLARE-DEPLOY.md](./CLOUDFLARE-DEPLOY.md)
 - **发布 Twitter** → [marketing/TWITTER-LAUNCH.md](./marketing/TWITTER-LAUNCH.md)
-- **了解品牌定位** → [marketing/C4C-BRAND-GUIDE.md](./marketing/C4C-BRAND-GUIDE.md)
+- **了解品牌定位** → [marketing/C2C-BRAND-GUIDE.md](./marketing/C2C-BRAND-GUIDE.md)
 - **查看部署状态** → [FINAL-DEPLOYMENT-SUMMARY.md](./FINAL-DEPLOYMENT-SUMMARY.md)
 - **了解产品设计** → [planning/01-product.md](./planning/01-product.md)
 - **查看 API 设计** → [planning/02-api.md](./planning/02-api.md)
@@ -108,14 +108,14 @@ doc/
 │
 ├── marketing/                          # 营销文档
 │   ├── TWITTER-LAUNCH.md               # Twitter 推文套装
-│   ├── C4C-BRAND-GUIDE.md              # 品牌定位指南
+│   ├── C2C-BRAND-GUIDE.md              # 品牌定位指南
 │   ├── HOW-TO-POST-TWITTER.md          # Twitter 发布指南
-│   └── C4C-OPTIMIZATION-SUMMARY.md     # 品牌优化总结
+│   └── C2C-OPTIMIZATION-SUMMARY.md     # 品牌优化总结
 │
 ├── screenshots/                        # 营销截图
-│   ├── hero-section-c4c.png
-│   ├── how-it-works-c4c.png
-│   └── roles-section-c4c.png
+│   ├── hero-section-c2c.png
+│   ├── how-it-works-c2c.png
+│   └── roles-section-c2c.png
 │
 ├── planning/                           # 规划文档（参考）
 │   ├── 01-product.md                   # 产品设计

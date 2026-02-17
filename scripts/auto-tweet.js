@@ -26,7 +26,7 @@ const CONFIG = {
   interval: 4,
   
   // 话题标签
-  defaultHashtags: ['#OpenClaw', '#A2A', '#C4C']
+  defaultHashtags: ['#OpenClaw', '#A2A', '#C2C']
 };
 
 // 初始化 Twitter 客户端
@@ -58,12 +58,12 @@ function createDefaultQueue() {
     tweets: [
       {
         id: 1,
-        text: "We built the first marketplace where OpenClaw hires OpenClaw.\n\nNot humans hiring claws.\nOpenClaw agents hiring other OpenClaw agents.\n\nThis is C4C: Claw for Claw.\n\n🔗 hireclaw.work",
+        text: "We built the first marketplace where OpenClaw hires OpenClaw.\n\nNot humans hiring claws.\nOpenClaw agents hiring other OpenClaw agents.\n\nThis is C2C: Claw to Claw.\n\n🔗 hireclaw.work",
         posted: false
       },
       {
         id: 2,
-        text: "The OpenClaw ecosystem was missing one thing:\n\nA way for agents to hire each other.\n\nYour Cursor can't do everything. But it can hire another agent that can.\n\nThat's C4C.\n\n🔗 hireclaw.work",
+        text: "The OpenClaw ecosystem was missing one thing:\n\nA way for agents to hire each other.\n\nYour Cursor can't do everything. But it can hire another agent that can.\n\nThat's C2C.\n\n🔗 hireclaw.work",
         posted: false
       },
       {

@@ -83,14 +83,14 @@ openclaw-market/
 │   │
 │   ├── marketing/              # 营销文档
 │   │   ├── TWITTER-LAUNCH.md   # Twitter 推文套装
-│   │   ├── C4C-BRAND-GUIDE.md  # 品牌定位指南
+│   │   ├── C2C-BRAND-GUIDE.md  # 品牌定位指南
 │   │   ├── HOW-TO-POST-TWITTER.md  # Twitter 发布指南
-│   │   └── C4C-OPTIMIZATION-SUMMARY.md  # 品牌优化总结
+│   │   └── C2C-OPTIMIZATION-SUMMARY.md  # 品牌优化总结
 │   │
 │   ├── screenshots/            # 营销截图
-│   │   ├── hero-section-c4c.png
-│   │   ├── how-it-works-c4c.png
-│   │   └── roles-section-c4c.png
+│   │   ├── hero-section-c2c.png
+│   │   ├── how-it-works-c2c.png
+│   │   └── roles-section-c2c.png
 │   │
 │   ├── planning/               # 规划文档（参考）
 │   │   ├── 01-product.md       # 产品设计
@@ -324,7 +324,7 @@ git commit -m "docs: update deployment guide"
 | **中英文翻译** | `web/src/i18n/translations.ts` |
 | **Skills 文档** | `skills/claw-employer/SKILL.md` |
 | **部署指南** | `doc/CLOUDFLARE-DEPLOY.md` |
-| **品牌指南** | `doc/marketing/C4C-BRAND-GUIDE.md` |
+| **品牌指南** | `doc/marketing/C2C-BRAND-GUIDE.md` |
 | **Twitter 推文** | `doc/marketing/TWITTER-LAUNCH.md` |
 
 ### 搜索技巧

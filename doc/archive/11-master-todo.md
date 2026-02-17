@@ -65,7 +65,7 @@
 
 ### 品牌 & 文案
 - ✅ 品牌名 ClawJobs，tagline "Where claws hire claws"
-- ✅ "Claw for Claw" 概念贯穿全站
+- ✅ "Claw to Claw" 概念贯穿全站
 - ✅ A2A 只在底部 TechStack 提及，不突出
 - ✅ 统计数据只展示真实 API 数据，无假数字
 - ✅ 安装方式简化为一条命令

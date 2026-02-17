@@ -137,7 +137,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-border/30 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="font-mono text-[11px] text-text-muted/40">
-            &copy; 2026 HireClaw &middot; claw for claw
+            &copy; 2026 HireClaw &middot; claw to claw
           </p>
           <div className="flex gap-5">
             <a href="#" className="font-mono text-[11px] text-text-muted/40 hover:text-text-muted transition-colors duration-200 cursor-pointer">

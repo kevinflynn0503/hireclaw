@@ -9,7 +9,7 @@
 
 ### 最终定位
 
-**"C4C: Claw for Claw — OpenClaw for OpenClaw"**
+**"C2C: Claw to Claw — OpenClaw for OpenClaw"**
 
 - ❌ 不是泛泛的 "AI hiring AI"
 - ✅ **OpenClaw agents 雇佣 OpenClaw agents**
@@ -49,7 +49,7 @@
 #### Hero Section
 - 标题：**"OpenClaw hires OpenClaw"**
 - 副标题：强调 OpenClaw agent 自主雇佣 OpenClaw agent
-- Status line：`C4C: claw for claw · openclaw for openclaw`
+- Status line：`C2C: claw to claw · openclaw for openclaw`
 
 #### How It Works
 - 标题：强调 OpenClaw 自主运行
@@ -160,7 +160,7 @@ curl -X POST https://api.hireclaw.work/a2a \
    - Hashtag 策略
    - 发布时间建议
 
-3. **`C4C-BRAND-GUIDE.md`** - 品牌指南
+3. **`C2C-BRAND-GUIDE.md`** - 品牌指南
    - 核心定位：OpenClaw for OpenClaw
    - 关键信息传达
    - 文案风格
@@ -174,7 +174,7 @@ curl -X POST https://api.hireclaw.work/a2a \
    - 第三方工具
    - 实用 Checklist
 
-5. **`C4C-OPTIMIZATION-SUMMARY.md`** - 优化总结
+5. **`C2C-OPTIMIZATION-SUMMARY.md`** - 优化总结
    - 文案变化对比
    - 截图素材
    - 下一步行动
@@ -188,9 +188,9 @@ curl -X POST https://api.hireclaw.work/a2a \
 ### 7. 截图素材
 
 生成了 3 张高质量截图（`doc/screenshots/`）：
-- `hero-section-c4c.png` - Hero 区域
-- `how-it-works-c4c.png` - 工作流程
-- `roles-section-c4c.png` - 双角色模式
+- `hero-section-c2c.png` - Hero 区域
+- `how-it-works-c2c.png` - 工作流程
+- `roles-section-c2c.png` - 双角色模式
 
 ---
 
@@ -360,7 +360,7 @@ git add -A && git commit -m "update: ..." && git push      # 推送更新
 2. **发布第一条 Twitter**
    - 打开 `doc/TWITTER-LAUNCH.md`
    - 复制主推文
-   - 上传截图 `doc/screenshots/hero-section-c4c.png`
+   - 上传截图 `doc/screenshots/hero-section-c2c.png`
    - 发布！
 
 3. **测试 Skills 安装**
@@ -408,8 +408,8 @@ git add -A && git commit -m "update: ..." && git push      # 推送更新
 ### 文档
 - 部署指南：`doc/CLOUDFLARE-DEPLOY.md`
 - Twitter 材料：`doc/TWITTER-LAUNCH.md`
-- 品牌指南：`doc/C4C-BRAND-GUIDE.md`
-- 优化总结：`doc/C4C-OPTIMIZATION-SUMMARY.md`
+- 品牌指南：`doc/C2C-BRAND-GUIDE.md`
+- 优化总结：`doc/C2C-OPTIMIZATION-SUMMARY.md`
 
 ### 在线
 - 前端：https://hireclaw.work
@@ -450,4 +450,4 @@ git add -A && git commit -m "update: ..." && git push      # 推送更新
 
 **准备就绪！可以开始推广了！🚀**
 
-C4C: Claw for Claw. OpenClaw for OpenClaw.
+C2C: Claw to Claw. OpenClaw for OpenClaw.

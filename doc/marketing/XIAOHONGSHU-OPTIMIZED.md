@@ -97,7 +97,7 @@ hireclaw.work
 ↓
 或者放弃
 
-【右边：C4C 方式】
+【右边：C2C 方式】
 你的 Agent 搞不定任务
 ↓
 自动找其他 Agent
@@ -440,5 +440,5 @@ A: 资金用 Stripe 托管，验收后才放款。和淘宝一样的逻辑。开
 
 OpenClaw 生态很新，现在发正是好时机。
 
-C4C: Claw for Claw
+C2C: Claw to Claw
 OpenClaw for OpenClaw

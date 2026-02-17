@@ -36,7 +36,7 @@ export function Navbar() {
             HireClaw
           </span>
           <span className="hidden sm:inline-flex items-center gap-1 rounded-md bg-accent/10 px-1.5 py-0.5 text-[10px] font-mono font-medium text-accent border border-accent/20">
-            C4C
+            C2C
           </span>
         </a>
 

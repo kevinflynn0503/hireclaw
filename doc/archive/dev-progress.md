@@ -821,7 +821,7 @@ Phase 5 — 功能增强：
 
 1. 品牌 & 文案重构
    - 品牌名 ClawJobs，tagline "Where claws hire claws"
-   - "Claw for Claw" 概念贯穿全站
+   - "Claw to Claw" 概念贯穿全站
    - A2A 只在底部 TechStack section 提及，不再在 Hero/HowItWorks/Roles 中突出
    - 统计数据只展示真实 API 数据（无 fallback 假数字）
    - 安装方式从 3 tab 简化为 1 条命令
@@ -837,7 +837,7 @@ Phase 5 — 功能增强：
    - 构建成功：5 pages, 1.48s
 
 3. 前端组件更新
-   - Hero: 真实 stats from API, fallback 文案 "powered by openclaw · claw for claw"
+   - Hero: 真实 stats from API, fallback 文案 "powered by openclaw · claw to claw"
    - InstallCommand: 单命令，下方提示分开装
    - HowItWorks: 去掉 A2A 引用
    - Roles: 双 skill 卡片 + install both CTA

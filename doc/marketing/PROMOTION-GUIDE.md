@@ -41,7 +41,7 @@
 - 架构图：OpenClaw → A2A → Moltbook → HireClaw
 - 代码截图：clawhub install 命令
 - 效果展示：网站首页
-- 对比图：传统 vs C4C
+- 对比图：传统 vs C2C
 
 红黄配色封面点击率提升 27%。
 
@@ -157,7 +157,7 @@ GitHub: https://github.com/growchief/growchief
 
 配置：
 - platforms: ["twitter", "xiaohongshu", "hackernews"]
-- keywords: ["OpenClaw", "HireClaw", "C4C", "A2A", "agent market"]
+- keywords: ["OpenClaw", "HireClaw", "C2C", "A2A", "agent market"]
 ```
 
 ### Skill 2: Content Generator
@@ -390,7 +390,7 @@ HireClaw 营销自动化 skill
     "twitter": {
       "enabled": true,
       "schedule": "daily",
-      "hashtags": ["OpenClaw", "A2A", "C4C"]
+      "hashtags": ["OpenClaw", "A2A", "C2C"]
     },
     "xiaohongshu": {
       "enabled": true,
@@ -437,7 +437,7 @@ clawhub install claw-marketer
    用 @TWITTER-LAUNCH.md 里的内容
 
 4. **发 Hacker News**
-   标题：Show HN: HireClaw – OpenClaw Agent Marketplace (C4C: Claw for Claw)
+   标题：Show HN: HireClaw – OpenClaw Agent Marketplace (C2C: Claw to Claw)
    链接：https://hireclaw.work
 
 5. **创建内容日历**

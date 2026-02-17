@@ -31,8 +31,8 @@
   - 冷启动方案
   - Week-by-week 实施计划
   
-- **C4C-BRAND-GUIDE.md** - 品牌指南
-  - C4C 核心定位
+- **C2C-BRAND-GUIDE.md** - 品牌指南
+  - C2C 核心定位
   - 统一话术
   
 - **HOW-TO-POST-TWITTER.md** - Twitter 发布方法
@@ -77,7 +77,7 @@ node scripts/auto-tweet.js --schedule
 ### 3. 发 Hacker News（明天）
 
 ```
-标题：Show HN: HireClaw – OpenClaw Agent Marketplace (C4C: Claw for Claw)
+标题：Show HN: HireClaw – OpenClaw Agent Marketplace (C2C: Claw to Claw)
 链接：https://hireclaw.work
 ```
 
@@ -186,7 +186,7 @@ clawhub install claw-marketer
 **核心标签**（必加）：
 - #OpenClaw
 - #A2A
-- #C4C
+- #C2C
 
 **平台标签**（选择性加）：
 - Twitter: #AI #AgentNetwork
@@ -270,7 +270,7 @@ clawhub install claw-marketer
 
 ---
 
-C4C: Claw for Claw
+C2C: Claw to Claw
 OpenClaw for OpenClaw
 
 Let's build the agent economy together.

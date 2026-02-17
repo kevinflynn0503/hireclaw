@@ -14,7 +14,7 @@
 → **[marketing/HOW-TO-POST-TWITTER.md](./marketing/HOW-TO-POST-TWITTER.md)** - 发布指南（手动/API/工具）
 
 ### 了解品牌定位
-→ **[marketing/C4C-BRAND-GUIDE.md](./marketing/C4C-BRAND-GUIDE.md)** - 品牌定位指南（OpenClaw for OpenClaw）
+→ **[marketing/C2C-BRAND-GUIDE.md](./marketing/C2C-BRAND-GUIDE.md)** - 品牌定位指南（OpenClaw for OpenClaw）
 
 ### 查看部署状态
 → **[FINAL-DEPLOYMENT-SUMMARY.md](./FINAL-DEPLOYMENT-SUMMARY.md)** - 最终部署总结（已完成的工作）
@@ -51,17 +51,17 @@
 | 文档 | 说明 |
 |------|------|
 | [marketing/TWITTER-LAUNCH.md](./marketing/TWITTER-LAUNCH.md) | Twitter 推文套装（5 组） |
-| [marketing/C4C-BRAND-GUIDE.md](./marketing/C4C-BRAND-GUIDE.md) | 品牌定位指南 |
+| [marketing/C2C-BRAND-GUIDE.md](./marketing/C2C-BRAND-GUIDE.md) | 品牌定位指南 |
 | [marketing/HOW-TO-POST-TWITTER.md](./marketing/HOW-TO-POST-TWITTER.md) | Twitter 发布指南 |
-| [marketing/C4C-OPTIMIZATION-SUMMARY.md](./marketing/C4C-OPTIMIZATION-SUMMARY.md) | 品牌优化总结 |
+| [marketing/C2C-OPTIMIZATION-SUMMARY.md](./marketing/C2C-OPTIMIZATION-SUMMARY.md) | 品牌优化总结 |
 
 ### 🖼️ 营销素材
 
 | 文件 | 说明 |
 |------|------|
-| [screenshots/hero-section-c4c.png](./screenshots/hero-section-c4c.png) | Hero 区域截图 |
-| [screenshots/how-it-works-c4c.png](./screenshots/how-it-works-c4c.png) | 工作流程截图 |
-| [screenshots/roles-section-c4c.png](./screenshots/roles-section-c4c.png) | 双角色模式截图 |
+| [screenshots/hero-section-c2c.png](./screenshots/hero-section-c2c.png) | Hero 区域截图 |
+| [screenshots/how-it-works-c2c.png](./screenshots/how-it-works-c2c.png) | 工作流程截图 |
+| [screenshots/roles-section-c2c.png](./screenshots/roles-section-c2c.png) | 双角色模式截图 |
 
 ### 📋 规划文档（参考）
 
@@ -97,14 +97,14 @@ doc/
 │
 ├── marketing/                          # 营销文档
 │   ├── TWITTER-LAUNCH.md               # Twitter 推文套装
-│   ├── C4C-BRAND-GUIDE.md              # 品牌定位指南
+│   ├── C2C-BRAND-GUIDE.md              # 品牌定位指南
 │   ├── HOW-TO-POST-TWITTER.md          # Twitter 发布指南
-│   └── C4C-OPTIMIZATION-SUMMARY.md     # 品牌优化总结
+│   └── C2C-OPTIMIZATION-SUMMARY.md     # 品牌优化总结
 │
 ├── screenshots/                        # 营销截图
-│   ├── hero-section-c4c.png
-│   ├── how-it-works-c4c.png
-│   └── roles-section-c4c.png
+│   ├── hero-section-c2c.png
+│   ├── how-it-works-c2c.png
+│   └── roles-section-c2c.png
 │
 ├── planning/                           # 规划文档（参考）
 │   ├── 01-product.md                   # 产品设计
@@ -148,7 +148,7 @@ doc/
 
 1. **部署项目**: [CLOUDFLARE-DEPLOY.md](./CLOUDFLARE-DEPLOY.md)
 2. **发布 Twitter**: [marketing/TWITTER-LAUNCH.md](./marketing/TWITTER-LAUNCH.md)
-3. **品牌定位**: [marketing/C4C-BRAND-GUIDE.md](./marketing/C4C-BRAND-GUIDE.md)
+3. **品牌定位**: [marketing/C2C-BRAND-GUIDE.md](./marketing/C2C-BRAND-GUIDE.md)
 
 ---
 
@@ -157,7 +157,7 @@ doc/
 ### 第一次接触项目
 1. 阅读 [../PROJECT-STRUCTURE.md](../PROJECT-STRUCTURE.md) - 了解项目结构
 2. 阅读 [FINAL-DEPLOYMENT-SUMMARY.md](./FINAL-DEPLOYMENT-SUMMARY.md) - 了解当前状态
-3. 阅读 [marketing/C4C-BRAND-GUIDE.md](./marketing/C4C-BRAND-GUIDE.md) - 了解品牌定位
+3. 阅读 [marketing/C2C-BRAND-GUIDE.md](./marketing/C2C-BRAND-GUIDE.md) - 了解品牌定位
 
 ### 要部署项目
 1. 阅读 [CLOUDFLARE-DEPLOY.md](./CLOUDFLARE-DEPLOY.md)

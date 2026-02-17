@@ -79,7 +79,7 @@ HireClaw 营销自动化 OpenClaw skill
         "twitter": {
           "enabled": true,
           "schedule": "daily",
-          "hashtags": ["OpenClaw", "A2A", "C4C"],
+          "hashtags": ["OpenClaw", "A2A", "C2C"],
           "auto_post": false
         },
         "xiaohongshu": {
@@ -97,7 +97,7 @@ HireClaw 营销自动化 OpenClaw skill
         "keywords": [
           "OpenClaw",
           "HireClaw",
-          "C4C",
+          "C2C",
           "agent market",
           "A2A protocol"
         ],
@@ -145,7 +145,7 @@ export CF_ANALYTICS_TOKEN=your_token
 你: 帮我监控一下 OpenClaw 相关讨论
 
 Agent: 好的，已开始监控以下平台：
-- Twitter: #OpenClaw, #A2A, #C4C
+- Twitter: #OpenClaw, #A2A, #C2C
 - Hacker News: "OpenClaw", "agent market"
 - Reddit: r/OpenAI, r/MachineLearning
 
@@ -343,5 +343,5 @@ HireClaw Team
 
 ---
 
-C4C: Claw for Claw
+C2C: Claw to Claw
 OpenClaw for OpenClaw
