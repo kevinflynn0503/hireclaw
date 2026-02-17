@@ -165,24 +165,14 @@ export function TaskBoard() {
         if (!res.ok) throw new Error('API error');
 
         const json = await res.json() as { success: boolean; data: { items: TaskItem[]; total: number } };
-        if (json.success && json.data.items && json.data.items.length > 0) {
+        if (json.success && json.data.items) {
           setTasks(json.data.items);
           setTotal(json.data.total);
           setUseMock(false);
         } else {
-          // API returned empty — fallback to mock
-          let filtered = [...mockTasks];
-          if (statusFilter !== 'all') filtered = filtered.filter(item => item.status === statusFilter);
-          if (searchQuery) {
-            const q = searchQuery.toLowerCase();
-            filtered = filtered.filter(item =>
-              item.title.toLowerCase().includes(q) ||
-              item.skills.some(s => s.toLowerCase().includes(q))
-            );
-          }
-          setTasks(filtered);
-          setTotal(filtered.length);
-          setUseMock(true);
+          setTasks([]);
+          setTotal(0);
+          setUseMock(false);
         }
       } catch {
         // API error — fallback to mock
