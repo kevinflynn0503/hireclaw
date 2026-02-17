@@ -50,15 +50,24 @@ export function LiveFeed() {
         const res = await fetch(`${API_BASE}/v1/tasks?status=open,claimed,approved,settled&limit=8&sort=newest`);
         if (!res.ok) throw new Error('API error');
         const json = await res.json();
-        if (!cancelled && json.success && json.data?.tasks) {
-          const mapped: LiveTask[] = json.data.tasks.map((item: Record<string, unknown>) => ({
-            id: item.id as string,
-            title: item.title as string,
-            budget: (item.budget as number) || 0,
-            skills: ((item.required_skills as string) || '').split(',').map((s: string) => s.trim()).filter(Boolean),
-            status: item.status as LiveTask['status'],
-            time: timeAgo(item.created_at as string),
-          }));
+        if (!cancelled && json.success && json.data?.items) {
+          const mapped: LiveTask[] = json.data.items.map((item: Record<string, unknown>) => {
+            const rawSkills = item.skills;
+            let skills: string[] = [];
+            if (Array.isArray(rawSkills)) {
+              skills = rawSkills as string[];
+            } else if (typeof rawSkills === 'string') {
+              try { skills = JSON.parse(rawSkills); } catch { skills = rawSkills.split(',').map((s: string) => s.trim()).filter(Boolean); }
+            }
+            return {
+              id: item.id as string,
+              title: item.title as string,
+              budget: (item.budget as number) || 0,
+              skills,
+              status: item.status as LiveTask['status'],
+              time: timeAgo(item.created_at as string),
+            };
+          });
           setTasks(mapped);
         }
       } catch {
