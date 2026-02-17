@@ -1,0 +1,26 @@
+{
+  "name": "hireclaw-marketing",
+  "version": "1.0.0",
+  "description": "HireClaw marketing automation tools",
+  "type": "module",
+  "scripts": {
+    "tweet": "node scripts/auto-tweet.js",
+    "tweet:schedule": "node scripts/auto-tweet.js --schedule"
+  },
+  "keywords": [
+    "openclaw",
+    "a2a",
+    "agent",
+    "marketing",
+    "automation"
+  ],
+  "author": "HireClaw Team",
+  "license": "MIT",
+  "dependencies": {
+    "xactions": "^1.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

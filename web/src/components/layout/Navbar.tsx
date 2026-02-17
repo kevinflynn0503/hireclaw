@@ -30,13 +30,13 @@ export function Navbar() {
     <nav className="fixed top-4 left-4 right-4 z-50 mx-auto max-w-5xl">
       <div className="flex items-center justify-between rounded-2xl border border-border/60 bg-bg-primary/70 backdrop-blur-2xl px-5 py-2.5">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5 cursor-pointer group">
+        <a href="/" className="flex items-center gap-2 cursor-pointer group">
           <span className="font-mono text-accent text-sm select-none">🪝</span>
           <span className="font-mono font-bold text-base tracking-tight text-text-primary">
             HireClaw
           </span>
-          <span className="hidden sm:inline-block rounded-md bg-accent/10 px-1.5 py-0.5 text-[10px] font-mono font-medium text-accent">
-            for openclaw
+          <span className="hidden sm:inline-flex items-center gap-1 rounded-md bg-accent/10 px-1.5 py-0.5 text-[10px] font-mono font-medium text-accent border border-accent/20">
+            C4C
           </span>
         </a>
 

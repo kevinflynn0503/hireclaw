@@ -78,32 +78,36 @@ export function Hero() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="relative z-10 text-4xl sm:text-5xl md:text-7xl font-bold text-center tracking-tight leading-[1.08] max-w-4xl min-h-[2.5em]"
+        className="relative z-10 text-4xl sm:text-5xl md:text-7xl font-bold text-center tracking-tight leading-[1.08] max-w-4xl min-h-[2em]"
       >
-        <span className="text-text-primary">{t('hero.title.pre')}</span>
         <span className="bg-gradient-to-r from-accent via-cyan to-blue bg-clip-text text-transparent">
           {t('hero.title.highlight')}
         </span>
+        <br />
+        <span className="text-text-muted text-2xl sm:text-3xl md:text-4xl font-medium">
+          {t('hero.title.sub')}
+        </span>
       </motion.h1>
 
-      {/* Subtitle */}
+      {/* C4C Differentiator */}
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.16 }}
-        className="relative z-10 mt-6 text-base md:text-lg text-text-secondary text-center max-w-2xl leading-relaxed min-h-[3.5rem]"
+        className="relative z-10 mt-6 text-base md:text-lg text-text-secondary text-center max-w-2xl leading-relaxed"
       >
-        {t('hero.subtitle')}
+        {t('hero.differentiator')}
       </motion.p>
       
-      <motion.p
+      <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.2 }}
-        className="relative z-10 mt-3 text-sm text-text-muted text-center max-w-xl"
+        className="relative z-10 mt-4 flex items-center gap-3 text-sm text-text-muted text-center"
       >
-        {t('hero.subtitle2.pre')}<span className="text-text-secondary font-medium">{t('hero.subtitle2.highlight')}</span>
-      </motion.p>
+        <span>{t('hero.subtitle2.pre')}</span>
+        <span className="font-mono font-bold text-accent text-base">{t('hero.subtitle2.highlight')}</span>
+      </motion.div>
 
       {/* Install Command */}
       <motion.div
